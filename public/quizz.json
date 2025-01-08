@@ -1,0 +1,33 @@
+{
+    "title": "Questionnaire sur les fruits et légumes",
+    "minimum_score": 4,
+    "succes_message": "felicitation",
+    "fail_message": "dommage",
+    "questions": [
+        {
+            "question": "Qu'est ce qui n'est pas un légume ?",
+            "choices": ["brocoli", "carotte", "peche", "epinard"],
+            "correct": "peche"
+        },
+        {
+            "question": "Qu'est ce qui n'est pas un fruit ?",
+            "choices": ["pomme", "poire", "peche", "epinard"],
+            "correct": "epinard"
+        },
+        {
+            "question": "Qu'est ce qui ne se mange pas ?",
+            "choices": ["brocoli", "chaise", "peche", "jambon"],
+            "correct": "chaise"
+        },
+        {
+            "question": "Qu'est ce qui vient du continent américain ?",
+            "choices": ["navet", "carotte", "tomate", "pois"],
+            "correct": "tomate"
+        },
+        {
+            "question": "Qu'est ce qui n'est pas bon ?",
+            "choices": ["endive", "choux", "peche", "epinard"],
+            "correct": "endive"
+        }
+    ]
+}
