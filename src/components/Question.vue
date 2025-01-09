@@ -1,7 +1,13 @@
 <script setup>
+import { ref, computed } from 'vue';
+
 const props = defineProps({
     question: Object
 })
+
+const emits = defineEmits(['reponse']);
+const reponse = ref(null);
+const noReponse = computed(() => reponse.value !== null)
 </script>
 
 <template>
@@ -10,12 +16,13 @@ const props = defineProps({
         <ul>
             <li v-for="(choices, index) in question.choices" :key="choices">
                 <label :for="`reponse${index}`">
-                    <input :id="`reponse${index}`" type="radio" name="reponse">
+                    <input :id="`reponse${index}`" type="radio" name="reponse" v-model="reponse" :value="choices">
                     {{ choices }}
                 </label>
             </li>
         </ul>
-        <button>Question suivante</button>
+        {{ reponse }}
+        <button :disabled="!noReponse" @click="emits('reponse', reponse)">Question suivante</button>
     </div>
 </template>
 
