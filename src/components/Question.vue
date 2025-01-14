@@ -1,5 +1,7 @@
 <script setup>
 import { ref, computed } from 'vue';
+import { shuffleArray } from '../functions/array';
+import Reponse from './Reponse.vue';
 
 const props = defineProps({
     question: Object
@@ -8,17 +10,15 @@ const props = defineProps({
 const emits = defineEmits(['reponse']);
 const reponse = ref(null);
 const noReponse = computed(() => reponse.value !== null)
+const randomChoices = computed(() => shuffleArray(props.question.choices))
 </script>
 
 <template>
     <div class="question">
         <h3>{{ question.question }}</h3>
         <ul>
-            <li v-for="(choices, index) in question.choices" :key="choices">
-                <label :for="`reponse${index}`">
-                    <input :id="`reponse${index}`" type="radio" name="reponse" v-model="reponse" :value="choices">
-                    {{ choices }}
-                </label>
+            <li v-for="(choice, index) in randomChoices" :key="choice">
+                <Reponse :id="`reponse${index}`" :disabled="noReponse" :value="choice" v-model="reponse"/>
             </li>
         </ul>
         {{ reponse }}

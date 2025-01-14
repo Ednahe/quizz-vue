@@ -15,10 +15,15 @@ const score = computed(() => {
     }, 0)
 })
 
+const victory = computed(() => score.value >= props.quizz.minimum_score)
+
 </script>
 
 <template>
     <h1>Recap</h1>
+    <p>
+        {{ victory ? quizz.succes_message : quizz.fail_message }}
+    </p>
     <p>
         Score : {{ score }}/{{ quizz.questions.length }}
     </p>
